@@ -1,0 +1,559 @@
+{
+	"info": {
+		"_postman_id": "540b9a4c-0942-4045-ab2c-4c41ce1ab54d",
+		"name": "ID - TEST - tokens 8082",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "check token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9dac1358-6bac-44ce-82bc-934b6973725c",
+						"exec": [
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8082/oauth/check_token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"oauth",
+						"check_token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check token gateway",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9dac1358-6bac-44ce-82bc-934b6973725c",
+						"exec": [
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/oauth/check_token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"check_token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "oauth pwd login",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9a6da85c-e225-4ef6-b3e8-80affeb33d18",
+						"exec": [
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bfc77c47-e9f9-44a1-a358-e3312ad0361b",
+						"exec": [
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"// *** TOKEN IN ACCESS_TOKEN FIELD ***",
+							"tests[\"Body contains access_token\"] = responseBody.has(\"access_token\");",
+							"tests[\"Body contains refresh_token\"] = responseBody.has(\"refresh_token\");",
+							"if (responseCode.code === 200 && responseBody.has(\"access_token\") && responseBody.has(\"refresh_token\")) {",
+							"    var data = JSON.parse(responseBody);",
+							"    postman.setGlobalVariable(\"access_token\", data.access_token);",
+							"    postman.setGlobalVariable(\"refresh_token\", data.refresh_token);",
+							"}",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "test-client",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "client-secret",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8082/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "oauth pwd login gateway",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9a6da85c-e225-4ef6-b3e8-80affeb33d18",
+						"exec": [
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bfc77c47-e9f9-44a1-a358-e3312ad0361b",
+						"exec": [
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"// *** TOKEN IN ACCESS_TOKEN FIELD ***",
+							"tests[\"Body contains access_token\"] = responseBody.has(\"access_token\");",
+							"tests[\"Body contains refresh_token\"] = responseBody.has(\"refresh_token\");",
+							"if (responseCode.code === 200 && responseBody.has(\"access_token\") && responseBody.has(\"refresh_token\")) {",
+							"    var data = JSON.parse(responseBody);",
+							"    postman.setGlobalVariable(\"access_token\", data.access_token);",
+							"    postman.setGlobalVariable(\"refresh_token\", data.refresh_token);",
+							"}",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "test-client",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "client-secret",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "refresh token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"// *** TOKEN IN ACCESS_TOKEN FIELD ***",
+							"tests[\"Body contains access_token\"] = responseBody.has(\"access_token\");",
+							"tests[\"Body contains refresh_token\"] = responseBody.has(\"refresh_token\");",
+							"if (responseCode.code === 200 && responseBody.has(\"access_token\") && responseBody.has(\"refresh_token\")) {",
+							"    var data = JSON.parse(responseBody);",
+							"    postman.setGlobalVariable(\"access_token\", data.access_token);",
+							"    postman.setGlobalVariable(\"refresh_token\", data.refresh_token);",
+							"}",
+							"",
+							"// *** TOKEN IN VALUE FIELD ***",
+							"// tests[\"Body contains value (access_token)\"] = responseBody.has(\"value\");",
+							"// tests[\"Body contains refreshToken\"] = responseBody.has(\"refreshToken\");",
+							"// if (responseCode.code === 200 && responseBody.has(\"value\") && responseBody.has(\"refreshToken\")) {",
+							"//     var data = JSON.parse(responseBody);",
+							"//     postman.setGlobalVariable(\"access_token\", data.value);",
+							"//     postman.setGlobalVariable(\"refresh_token\", data.refreshToken.value);",
+							"// }",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer{{access_token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "reactjs_client",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "reactjs_secret",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "{{refresh_token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{system_env}}/greenocc/oauth/token",
+					"host": [
+						"{{system_env}}"
+					],
+					"path": [
+						"greenocc",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get actuator metrics",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e7ef416f-c898-4d0d-abf4-97f1c42221b2",
+						"exec": [
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer{{access_token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8082/actuator",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"actuator"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get hello msg",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e7ef416f-c898-4d0d-abf4-97f1c42221b2",
+						"exec": [
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer{{access_token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8082/hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e7ef416f-c898-4d0d-abf4-97f1c42221b2",
+						"exec": [
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer{{access_token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8081/products/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"products",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get product gateway",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e7ef416f-c898-4d0d-abf4-97f1c42221b2",
+						"exec": [
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer{{access_token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/products/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
