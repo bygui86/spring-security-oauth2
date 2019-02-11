@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProductController {
 
+	// we could use also some annotations, or as is using a specific config class
 	@GetMapping("/products/{id}")
 	public Product getProduct(@PathVariable String id) {
 

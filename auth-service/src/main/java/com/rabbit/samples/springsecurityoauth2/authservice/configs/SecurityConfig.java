@@ -13,13 +13,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+// AUTHENTICATION SERVER
+// Spring Security
 @EnableWebSecurity
+// relaated to resource-service, not needed anymore
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+	// spring security
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	// alias UserDetailsService
 	@Autowired
 	private InMemoryUserDetailsManager userDetailsService;
 
@@ -33,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						.authorities("USER")
 						.build()
 		);
+
 		userDetailsService.createUser(
 				User.builder()
 						.username("admin")
@@ -40,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						.authorities("ADMIN")
 						.build()
 		);
+
 		auth
 				.userDetailsService(userDetailsService)
 				.passwordEncoder(passwordEncoder);
@@ -50,33 +57,37 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http
 				.csrf().disable()
-				//
 				.authorizeRequests()
 				.anyRequest()
 				.authenticated()
 		;
-
 	}
 
+	// spring security
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
+	// spring security
+	// alias UserDetailsService
 	@Bean
 	protected InMemoryUserDetailsManager userDetailManager() {
 		return new InMemoryUserDetailsManager();
 	}
 
+	// REQUIRED by the priority bean loading
+	// TODO test with @Order spring annotation
 	@Bean
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {
+
 		return super.authenticationManagerBean();
 	}
 
 	private String getEncodedPassword(String password) {
+
 		return passwordEncoder.encode(password);
 	}
-
 
 }

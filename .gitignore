@@ -43,11 +43,16 @@ out/
 .externalToolBuilders/
 .metadata*/
 .recommenders/
+.settings/
 eclipsebin/
 RemoteSystemsTempFiles/
+.project
+.classpath
 
 ########### Visual Studio Code
+.vscode/
 *.code-workspace
+.factorypath
 
 
 
@@ -64,33 +69,3 @@ bin/
 build/
 target/
 *.class
-
-\.classpath
-
-\.factorypath
-
-\.project
-
-\.settings/org\.eclipse\.core\.resources\.prefs
-
-\.settings/org\.eclipse\.jdt\.apt\.core\.prefs
-
-\.settings/org\.eclipse\.jdt\.core\.prefs
-
-\.settings/org\.eclipse\.m2e\.core\.prefs
-
-\.vscode/settings\.json
-
-api-gateway-reactive/\.settings/org\.eclipse\.core\.resources\.prefs
-
-api-gateway-reactive/\.settings/org\.eclipse\.jdt\.apt\.core\.prefs
-
-api-gateway-reactive/\.settings/org\.eclipse\.jdt\.core\.prefs
-
-api-gateway-reactive/\.settings/org\.eclipse\.m2e\.core\.prefs
-
-api-gateway/\.settings/
-
-auth-service/\.settings/
-
-product-service/\.settings/

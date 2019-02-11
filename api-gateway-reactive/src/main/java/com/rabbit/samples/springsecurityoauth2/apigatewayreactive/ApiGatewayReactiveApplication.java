@@ -7,6 +7,7 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 
+// based on spring webflux + netty
 @SpringBootApplication
 public class ApiGatewayReactiveApplication {
 

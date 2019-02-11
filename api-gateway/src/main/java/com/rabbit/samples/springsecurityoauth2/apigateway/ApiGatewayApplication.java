@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 
+// based on Zuul
+// zull routes specified in application.properties
 @SpringBootApplication
 @EnableZuulProxy
 public class ApiGatewayApplication {

@@ -7,7 +7,7 @@
 	<groupId>com.rabbit.samples</groupId>
 	<artifactId>spring-security-oauth2</artifactId>
 	<packaging>pom</packaging>
-	<version>0.0.1</version>
+	<version>0.0.1.</version>
 
 	<modules>
 		<module>api-gateway</module>

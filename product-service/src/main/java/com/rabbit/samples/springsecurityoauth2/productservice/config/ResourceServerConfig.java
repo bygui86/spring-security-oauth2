@@ -9,10 +9,12 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 
 
 @Configuration
+// spring security oauth
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
+	// resource-service name and type
 	@Override
 	public void configure(final ResourceServerSecurityConfigurer resources) {
 
@@ -21,6 +23,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 				.stateless(true);
 	}
 
+	// spring security
 	@Override
 	public void configure(final HttpSecurity http) throws Exception {
 
@@ -32,4 +35,13 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 				// .hasRole("CUSTOMERGROUP");
 
 	}
+
+	// @Bean
+	// public RestTemplate oAuth2RestTemplate() {
+	//
+	// 	final OAuth2RestTemplate oAuth2RestTemplate = new OAuth2RestTemplate(resourceDetails(), new DefaultOAuth2ClientContext());
+	// 	//oAuth2RestTemplate.setRequestFactory(new Netty4ClientHttpRequestFactory());
+	// 	return oAuth2RestTemplate;
+	//
+	// }
 }
